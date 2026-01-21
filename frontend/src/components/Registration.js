@@ -123,10 +123,10 @@ const Registration = () => {
 
   const RadioOption = ({ name, value, label, current, required }) => (
     <label className={`
-      relative flex items-center justify-center p-4 cursor-pointer rounded border transition-all
+      relative flex items-center justify-center p-3 md:p-4 cursor-pointer rounded border transition-all duration-300
       ${current === value 
-        ? 'bg-krafton-yellow/10 border-krafton-yellow text-krafton-yellow' 
-        : 'bg-krafton-dark-gray/30 border-gray-700 text-gray-400 hover:border-gray-500 hover:bg-krafton-dark-gray/50'}
+        ? 'bg-krafton-yellow/10 border-krafton-yellow text-krafton-yellow shadow-[0_0_15px_rgba(255,222,0,0.2)]' 
+        : 'bg-krafton-dark-gray/30 border-gray-700 text-gray-400 hover:border-gray-500 hover:bg-krafton-dark-gray/50 hover:text-gray-200'}
     `}>
       <input
         type="radio"
@@ -137,7 +137,7 @@ const Registration = () => {
         checked={current === value}
         required={required}
       />
-      <span className="font-bold uppercase tracking-wider text-sm">{label}</span>
+      <span className="font-bold uppercase tracking-wider text-xs md:text-sm">{label}</span>
       {current === value && (
         <div className="absolute inset-0 border-2 border-krafton-yellow rounded opacity-50 blur-[2px]" />
       )}
@@ -145,65 +145,73 @@ const Registration = () => {
   );
 
   return (
-    <div className="min-h-screen bg-krafton-black relative font-sans">
+    <div className="min-h-screen bg-krafton-black relative font-sans overflow-x-hidden">
       {/* Background Image with Overlay */}
       <div className="fixed inset-0 z-0">
-        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1538481199705-c710c4e965fc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')] bg-cover bg-center opacity-20" />
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1538481199705-c710c4e965fc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')] bg-cover bg-center opacity-20 scale-105 animate-pulse-slow" />
         <div className="absolute inset-0 bg-gradient-to-b from-krafton-black via-transparent to-krafton-black" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent via-krafton-black/80 to-krafton-black" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent via-krafton-black/90 to-krafton-black" />
       </div>
 
-      <div className="relative z-10 max-w-4xl mx-auto px-4 py-12">
+      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 py-8 md:py-16">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-5xl md:text-7xl font-black italic text-white mb-2 tracking-tighter"
-              style={{ textShadow: '0 0 20px rgba(255, 222, 0, 0.3)' }}>
-            ODx <span className="text-transparent bg-clip-text bg-gradient-to-r from-krafton-yellow to-yellow-600">TOURNAMENT</span>
+        <div className="text-center mb-10 md:mb-16">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-black italic text-white mb-4 tracking-tighter drop-shadow-2xl"
+              style={{ textShadow: '0 0 30px rgba(255, 222, 0, 0.4)' }}>
+            ODx <span className="text-transparent bg-clip-text bg-gradient-to-r from-krafton-yellow via-yellow-400 to-yellow-600">TOURNAMENT</span>
           </h1>
-          <p className="text-gray-400 text-lg tracking-widest uppercase border-t border-b border-gray-800 py-2 inline-block">
-            Official Registration Portal
-          </p>
+          <div className="relative inline-block">
+            <p className="text-gray-400 text-sm md:text-lg tracking-[0.2em] md:tracking-[0.3em] uppercase border-y border-gray-800 py-2 md:py-3 px-8">
+              Official Registration Portal
+            </p>
+            <div className="absolute -left-2 top-0 bottom-0 w-[2px] bg-krafton-yellow/50" />
+            <div className="absolute -right-2 top-0 bottom-0 w-[2px] bg-krafton-yellow/50" />
+          </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-8">
+        <form onSubmit={handleSubmit} className="space-y-6 md:space-y-10">
           {/* Tournament Info Card */}
-          <div className="bg-krafton-dark-gray/80 backdrop-blur-xl border border-white/10 p-8 rounded-xl shadow-2xl relative overflow-hidden group">
-            <div className="absolute top-0 left-0 w-1 h-full bg-krafton-yellow" />
-            <div className="grid md:grid-cols-2 gap-8">
+          <div className="bg-krafton-dark-gray/80 backdrop-blur-xl border border-white/10 p-6 md:p-8 rounded-2xl shadow-2xl relative overflow-hidden group hover:border-white/20 transition-all duration-300">
+            <div className="absolute top-0 left-0 w-1 md:w-2 h-full bg-gradient-to-b from-krafton-yellow to-yellow-600" />
+            <div className="grid md:grid-cols-2 gap-8 items-center">
               <div>
-                <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-2">
-                  <Trophy className="text-krafton-yellow" /> Tournament Details
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 flex items-center gap-3">
+                  <Trophy className="text-krafton-yellow drop-shadow-lg" size={32} /> 
+                  <span className="italic">TOURNAMENT DETAILS</span>
                 </h2>
-                <p className="text-gray-400 mb-6 leading-relaxed">
-                  Join the ultimate battleground challenge starting <span className="text-white font-bold">27 January 2026</span>. 
+                <p className="text-gray-300 mb-8 leading-relaxed text-sm md:text-base">
+                  Join the ultimate battleground challenge starting <span className="text-krafton-yellow font-bold">27 January 2026</span>. 
                   Prove your skills and dominate the arena.
                 </p>
-                <div className="space-y-2 text-sm">
-                  <div className="flex justify-between items-center bg-black/40 p-3 rounded border border-white/5">
-                    <span className="text-gray-400">Entry Fee</span>
-                    <span className="text-krafton-yellow font-bold text-lg">₹100</span>
+                <div className="space-y-3 text-sm">
+                  <div className="flex justify-between items-center bg-black/40 p-4 rounded-lg border border-white/5 hover:border-krafton-yellow/30 transition-colors">
+                    <span className="text-gray-400 font-medium tracking-wide">ENTRY FEE</span>
+                    <span className="text-krafton-yellow font-bold text-xl">₹100</span>
                   </div>
-                  <div className="flex justify-between items-center bg-black/40 p-3 rounded border border-white/5">
-                    <span className="text-gray-400">Per Kill Reward</span>
-                    <span className="text-krafton-yellow font-bold">₹5</span>
+                  <div className="flex justify-between items-center bg-black/40 p-4 rounded-lg border border-white/5 hover:border-krafton-yellow/30 transition-colors">
+                    <span className="text-gray-400 font-medium tracking-wide">PER KILL REWARD</span>
+                    <span className="text-krafton-yellow font-bold text-xl">₹5</span>
                   </div>
                 </div>
               </div>
-              <div className="bg-black/50 p-6 rounded-lg border border-white/5">
-                <h3 className="text-white font-bold mb-4 uppercase text-sm tracking-wider text-center">Prize Pool</h3>
-                <div className="space-y-4">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-yellow-500/20 flex items-center justify-center text-2xl">🥇</div>
+              <div className="bg-gradient-to-br from-black/60 to-black/30 p-6 rounded-xl border border-white/5 relative overflow-hidden">
+                <div className="absolute top-0 right-0 p-4 opacity-10">
+                  <Trophy size={120} />
+                </div>
+                <h3 className="text-white font-bold mb-6 uppercase text-sm tracking-[0.2em] text-center border-b border-white/10 pb-2">Prize Pool Distribution</h3>
+                <div className="space-y-4 relative z-10">
+                  <div className="flex items-center gap-5 bg-white/5 p-3 rounded-lg border border-white/5 hover:bg-white/10 transition-colors">
+                    <div className="w-14 h-14 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center text-3xl shadow-lg shadow-yellow-500/20">🥇</div>
                     <div>
-                      <div className="text-xs text-gray-500 uppercase">1st Place</div>
-                      <div className="text-xl font-bold text-white">₹1000</div>
+                      <div className="text-[10px] md:text-xs text-yellow-200 uppercase tracking-wider font-bold">Champion</div>
+                      <div className="text-2xl font-black text-white italic">₹1000</div>
                     </div>
                   </div>
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-gray-500/20 flex items-center justify-center text-2xl">🥈</div>
+                  <div className="flex items-center gap-5 bg-white/5 p-3 rounded-lg border border-white/5 hover:bg-white/10 transition-colors">
+                    <div className="w-14 h-14 rounded-full bg-gradient-to-br from-gray-300 to-gray-500 flex items-center justify-center text-3xl shadow-lg shadow-gray-500/20">🥈</div>
                     <div>
-                      <div className="text-xs text-gray-500 uppercase">2nd Place</div>
-                      <div className="text-xl font-bold text-white">₹500</div>
+                      <div className="text-[10px] md:text-xs text-gray-300 uppercase tracking-wider font-bold">Runner Up</div>
+                      <div className="text-2xl font-black text-white italic">₹500</div>
                     </div>
                   </div>
                 </div>
@@ -212,10 +220,10 @@ const Registration = () => {
           </div>
 
           {/* Player Details */}
-          <div className="bg-krafton-dark-gray/60 backdrop-blur-md border border-white/5 p-8 rounded-xl">
+          <div className="bg-krafton-dark-gray/60 backdrop-blur-md border border-white/5 p-6 md:p-8 rounded-2xl shadow-xl">
             <SectionTitle icon={Users} title="Player Information" />
             
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-6 md:gap-8">
               <InputGroup label="Full Name" required>
                 <TextInput name="fullName" placeholder="ENTER YOUR FULL NAME" required />
               </InputGroup>
@@ -233,32 +241,34 @@ const Registration = () => {
               </InputGroup>
             </div>
 
-            <InputGroup label="Email Address">
-              <TextInput name="email" type="email" placeholder="YOUR@EMAIL.COM" />
-            </InputGroup>
+            <div className="mt-6">
+              <InputGroup label="Email Address">
+                <TextInput name="email" type="email" placeholder="YOUR@EMAIL.COM" />
+              </InputGroup>
+            </div>
           </div>
 
           {/* Team Details */}
-          <div className="bg-krafton-dark-gray/60 backdrop-blur-md border border-white/5 p-8 rounded-xl">
+          <div className="bg-krafton-dark-gray/60 backdrop-blur-md border border-white/5 p-6 md:p-8 rounded-2xl shadow-xl">
             <SectionTitle icon={Crosshair} title="Squad Configuration" />
             
-            <div className="mb-6">
+            <div className="mb-8">
               <label className="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Team Type *</label>
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {['Solo', 'Duo', 'Squad'].map(type => (
                   <RadioOption key={type} name="teamType" value={type} label={type} current={formData.teamType} required />
                 ))}
               </div>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-8">
               <InputGroup label="Team Name">
                 <TextInput name="teamName" placeholder="E.G. TEAM SOUL" />
               </InputGroup>
 
               <div className="mb-6">
                 <label className="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Players Count *</label>
-                <div className="grid grid-cols-4 gap-2">
+                <div className="grid grid-cols-4 gap-3">
                   {['1', '2', '3', '4'].map(count => (
                     <RadioOption key={count} name="playerCount" value={count} label={count} current={formData.playerCount} required />
                   ))}
@@ -268,69 +278,88 @@ const Registration = () => {
           </div>
 
           {/* Payment Section */}
-          <div className="bg-krafton-dark-gray/60 backdrop-blur-md border border-white/5 p-8 rounded-xl">
+          <div className="bg-krafton-dark-gray/60 backdrop-blur-md border border-white/5 p-6 md:p-8 rounded-2xl shadow-xl">
             <SectionTitle icon={CreditCard} title="Payment Verification" />
             
-            <div className="grid md:grid-cols-2 gap-8 mb-6">
-               <div>
-                  <label className="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Payment Mode *</label>
-                  <div className="grid grid-cols-2 gap-3">
-                    {['UPI', 'PhonePe', 'GPay', 'Paytm'].map(mode => (
-                      <RadioOption key={mode} name="paymentMode" value={mode} label={mode} current={formData.paymentMode} required />
-                    ))}
+            <div className="grid md:grid-cols-2 gap-8 md:gap-12 mb-8">
+               <div className="space-y-6">
+                  <div>
+                    <label className="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Payment Mode *</label>
+                    <div className="grid grid-cols-2 gap-3">
+                      {['UPI', 'PhonePe', 'GPay', 'Paytm'].map(mode => (
+                        <RadioOption key={mode} name="paymentMode" value={mode} label={mode} current={formData.paymentMode} required />
+                      ))}
+                    </div>
                   </div>
                   
                   {formData.paymentMode && (
-                    <div className="mt-6 animate-fade-in-up">
-                      <div className="bg-white p-4 rounded-lg inline-block shadow-lg">
-                        <img src={qrCodeImg} alt="Payment QR Code" className="w-48 h-48 object-contain" />
+                    <div className="animate-fade-in-up bg-white/5 p-6 rounded-xl border border-white/10 text-center">
+                      <div className="bg-white p-3 rounded-lg inline-block shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+                        <img src={qrCodeImg} alt="Payment QR Code" className="w-40 h-40 md:w-48 md:h-48 object-contain" />
                       </div>
-                      <p className="text-gray-400 text-xs mt-2 font-mono">Scan to pay via {formData.paymentMode}</p>
+                      <p className="text-krafton-yellow text-xs mt-4 font-mono uppercase tracking-wider">
+                        Scan to pay via <span className="font-bold">{formData.paymentMode}</span>
+                      </p>
                     </div>
                   )}
                </div>
                
-               <InputGroup label="Transaction Screenshot" required>
-                  <label className="border-2 border-dashed border-gray-700 rounded-lg p-8 text-center hover:border-krafton-yellow transition-colors cursor-pointer bg-black/20 block">
-                    <input 
-                      type="file" 
-                      accept="image/*,.pdf" 
-                      className="hidden" 
-                      onChange={handleFileChange}
-                      required
-                    />
-                    <Upload className={`mx-auto mb-2 ${formData.paymentScreenshot ? 'text-krafton-yellow' : 'text-gray-500'}`} />
-                    <span className={`text-sm font-medium ${formData.paymentScreenshot ? 'text-krafton-yellow' : 'text-gray-400'}`}>
-                      {formData.paymentScreenshot ? formData.paymentScreenshot.name : 'Click to upload payment proof'}
-                    </span>
-                  </label>
-               </InputGroup>
+               <div className="flex flex-col justify-between">
+                 <InputGroup label="Transaction Screenshot" required>
+                    <label className={`
+                      flex flex-col items-center justify-center h-full min-h-[250px]
+                      border-2 border-dashed rounded-xl p-8 text-center transition-all duration-300 cursor-pointer
+                      ${formData.paymentScreenshot 
+                        ? 'border-krafton-yellow bg-krafton-yellow/5' 
+                        : 'border-gray-700 bg-black/20 hover:border-gray-500 hover:bg-black/30'}
+                    `}>
+                      <input 
+                        type="file" 
+                        accept="image/*,.pdf" 
+                        className="hidden" 
+                        onChange={handleFileChange}
+                        required
+                      />
+                      <div className={`p-4 rounded-full mb-4 ${formData.paymentScreenshot ? 'bg-krafton-yellow/20' : 'bg-gray-800'}`}>
+                        <Upload className={formData.paymentScreenshot ? 'text-krafton-yellow' : 'text-gray-400'} size={32} />
+                      </div>
+                      <span className={`text-sm font-medium block max-w-[200px] truncate ${formData.paymentScreenshot ? 'text-krafton-yellow' : 'text-gray-400'}`}>
+                        {formData.paymentScreenshot ? formData.paymentScreenshot.name : 'Click to upload payment proof'}
+                      </span>
+                      {!formData.paymentScreenshot && (
+                        <p className="text-xs text-gray-500 mt-2">Supports JPG, PNG, PDF</p>
+                      )}
+                    </label>
+                 </InputGroup>
+               </div>
             </div>
 
-            <InputGroup label="Payment Confirmation" required>
-              <label className="flex items-center gap-4 p-4 border border-gray-700 rounded hover:bg-white/5 transition-colors cursor-pointer group">
-                <div className="relative inline-flex items-center">
-                  <input 
-                    type="checkbox" 
-                    name="paidEntry" 
-                    required
-                    className="sr-only peer"
-                    onChange={handleChange}
-                    checked={!!formData.paidEntry}
-                  />
-                  <div className="w-14 h-7 bg-gray-600 peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-krafton-yellow rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-krafton-yellow"></div>
-                </div>
-                <span className="text-white font-medium group-hover:text-krafton-yellow transition-colors">I have paid the entry fee of ₹100</span>
-              </label>
-            </InputGroup>
+            <div className="bg-black/20 p-4 rounded-xl border border-white/5">
+              <InputGroup label="Payment Confirmation" required>
+                <label className="flex items-center gap-4 cursor-pointer group select-none">
+                  <div className="relative inline-flex items-center">
+                    <input 
+                      type="checkbox" 
+                      name="paidEntry" 
+                      required
+                      className="sr-only peer"
+                      onChange={handleChange}
+                      checked={!!formData.paidEntry}
+                    />
+                    <div className="w-14 h-7 bg-gray-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-gray-300 after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-krafton-yellow peer-checked:after:bg-white peer-checked:after:border-white transition-colors"></div>
+                  </div>
+                  <span className="text-gray-300 font-medium group-hover:text-white transition-colors">I confirm that I have paid the entry fee of ₹100</span>
+                </label>
+              </InputGroup>
+            </div>
           </div>
 
           {/* Final Checks */}
-          <div className="bg-krafton-dark-gray/60 backdrop-blur-md border border-white/5 p-8 rounded-xl">
+          <div className="bg-krafton-dark-gray/60 backdrop-blur-md border border-white/5 p-6 md:p-8 rounded-2xl shadow-xl">
              <SectionTitle icon={Shield} title="Terms & Verification" />
 
-             <div className="space-y-4">
-               <label className="flex items-start space-x-4 cursor-pointer group">
+             <div className="space-y-5 bg-black/20 p-6 rounded-xl border border-white/5">
+               <label className="flex items-start space-x-4 cursor-pointer group select-none">
                  <div className="relative mt-1">
                    <input
                      type="checkbox"
@@ -340,17 +369,19 @@ const Registration = () => {
                      onChange={handleChange}
                    />
                    <div className="w-6 h-6 border-2 border-gray-600 rounded bg-transparent peer-checked:bg-krafton-yellow peer-checked:border-krafton-yellow transition-all" />
-                   <div className="absolute inset-0 flex items-center justify-center text-black opacity-0 peer-checked:opacity-100 transition-opacity">
-                     ✓
+                   <div className="absolute inset-0 flex items-center justify-center text-black opacity-0 peer-checked:opacity-100 transition-opacity transform scale-50 peer-checked:scale-100">
+                     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                     </svg>
                    </div>
                  </div>
                  <div>
-                   <span className="text-white font-bold">I accept the Tournament Rules & Fair Play Policy</span>
-                   <p className="text-xs text-gray-500 mt-1">Any use of hacks/cheats will result in immediate disqualification and ban.</p>
+                   <span className="text-gray-200 font-bold group-hover:text-white transition-colors">I accept the Tournament Rules & Fair Play Policy</span>
+                   <p className="text-xs text-gray-500 mt-1">Any use of hacks/cheats will result in immediate disqualification.</p>
                  </div>
                </label>
 
-               <label className="flex items-start space-x-4 cursor-pointer group">
+               <label className="flex items-start space-x-4 cursor-pointer group select-none">
                  <div className="relative mt-1">
                    <input
                      type="checkbox"
@@ -360,11 +391,13 @@ const Registration = () => {
                      onChange={handleChange}
                    />
                    <div className="w-6 h-6 border-2 border-gray-600 rounded bg-transparent peer-checked:bg-krafton-yellow peer-checked:border-krafton-yellow transition-all" />
-                   <div className="absolute inset-0 flex items-center justify-center text-black opacity-0 peer-checked:opacity-100 transition-opacity">
-                     ✓
+                   <div className="absolute inset-0 flex items-center justify-center text-black opacity-0 peer-checked:opacity-100 transition-opacity transform scale-50 peer-checked:scale-100">
+                     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                       <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                     </svg>
                    </div>
                  </div>
-                 <span className="text-white font-bold">I understand the Prize Distribution structure</span>
+                 <span className="text-gray-200 font-bold group-hover:text-white transition-colors">I understand the Prize Distribution structure</span>
                </label>
              </div>
 
@@ -379,11 +412,11 @@ const Registration = () => {
           <div className="pt-8 pb-20">
             <button
               type="submit"
-              className="w-full bg-krafton-yellow text-black text-xl font-black italic uppercase tracking-tighter py-6 px-8 rounded clip-path-polygon hover:bg-yellow-400 hover:scale-[1.01] active:scale-[0.99] transition-all shadow-[0_0_20px_rgba(255,222,0,0.3)] flex items-center justify-center gap-3"
+              className="w-full bg-gradient-to-r from-krafton-yellow to-yellow-500 text-black text-xl md:text-2xl font-black italic uppercase tracking-tighter py-6 px-8 rounded-xl hover:from-yellow-400 hover:to-yellow-300 hover:scale-[1.01] active:scale-[0.99] transition-all shadow-[0_0_30px_rgba(255,222,0,0.3)] flex items-center justify-center gap-4 group"
             >
-              Confirm Registration <ChevronRight size={28} />
+              Confirm Registration <ChevronRight size={32} className="group-hover:translate-x-1 transition-transform" />
             </button>
-            <p className="text-center text-gray-600 text-xs mt-4">
+            <p className="text-center text-gray-500 text-xs mt-6 font-medium">
               By registering, you agree to the Terms of Service and Privacy Policy.
             </p>
           </div>

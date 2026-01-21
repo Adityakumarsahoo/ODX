@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Calendar, Clock, MapPin, Users, ChevronRight } from 'lucide-react';
 import homeImg from '../assets/home.png';
 
@@ -51,7 +52,7 @@ const Tournaments = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {tournaments.map((tournament) => (
-            <div key={tournament.id} className="group bg-gray-900/50 border border-white/10 rounded-xl overflow-hidden hover:border-krafton-yellow/50 transition-all hover:transform hover:-translate-y-1">
+            <Link to="/registration" key={tournament.id} className="group bg-gray-900/50 border border-white/10 rounded-xl overflow-hidden hover:border-krafton-yellow/50 transition-all hover:transform hover:-translate-y-1 block">
               <div className="relative h-48 overflow-hidden">
                 <div className="absolute top-4 right-4 bg-krafton-yellow text-black text-xs font-black uppercase px-3 py-1 rounded z-10">
                   {tournament.status}
@@ -93,12 +94,12 @@ const Tournaments = () => {
                     <div className="text-xs text-gray-500 uppercase">Prize Pool</div>
                     <div className="text-xl font-bold text-white">{tournament.prize}</div>
                   </div>
-                  <button className="bg-white/10 hover:bg-krafton-yellow hover:text-black text-white p-3 rounded-full transition-all">
+                  <div className="bg-white/10 hover:bg-krafton-yellow hover:text-black text-white p-3 rounded-full transition-all">
                     <ChevronRight size={20} />
-                  </button>
+                  </div>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

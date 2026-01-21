@@ -67,6 +67,9 @@ const Navbar = () => {
             <Search size={20} />
           </button>
           <div className="w-px h-4 bg-white/20"></div>
+          <Link to="/admin" className="text-white hover:text-krafton-yellow text-xs font-bold tracking-widest transition-colors uppercase">
+            Admin
+          </Link>
           <Link to="/registration" className="px-5 py-2 text-xs font-bold text-black bg-krafton-yellow hover:bg-yellow-400 rounded transition-all uppercase tracking-wider shadow-[0_0_10px_rgba(255,222,0,0.3)] hover:shadow-[0_0_20px_rgba(255,222,0,0.5)]">
             Sign Up
           </Link>
@@ -98,6 +101,9 @@ const Navbar = () => {
           </Link>
           <Link to="#" className="text-white font-bold tracking-widest py-3 border-b border-white/5 hover:text-krafton-yellow transition-colors" onClick={() => setMobileMenuOpen(false)}>
             MEDIA
+          </Link>
+          <Link to="/admin" className="text-white font-bold tracking-widest py-3 border-b border-white/5 hover:text-krafton-yellow transition-colors" onClick={() => setMobileMenuOpen(false)}>
+            ADMIN LOGIN
           </Link>
           <div className="flex flex-col gap-3 mt-4">
             <Link to="/registration" className="w-full py-3 text-sm font-bold text-black bg-krafton-yellow rounded uppercase text-center" onClick={() => setMobileMenuOpen(false)}>

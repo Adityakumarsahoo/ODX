@@ -6,6 +6,9 @@ import Registration from './components/Registration';
 import Rankings from './components/Rankings';
 import Tournaments from './components/Tournaments';
 import News from './components/News';
+import AdminLogin from './components/AdminLogin';
+import AdminDashboard from './components/AdminDashboard';
+import Rules from './components/Rules';
 import { MessageSquare, X, MessageCircle, Mail, HelpCircle } from 'lucide-react';
 
 // Layout wrapper to include Navbar and Footer on every page (except maybe full-screen ones if needed)
@@ -70,6 +73,9 @@ function App() {
         <Route path="/rankings" element={<Layout><Rankings /></Layout>} />
         <Route path="/tournaments" element={<Layout><Tournaments /></Layout>} />
         <Route path="/news" element={<Layout><News /></Layout>} />
+        <Route path="/rules" element={<Layout><Rules /></Layout>} />
+        <Route path="/admin" element={<Layout><AdminLogin /></Layout>} />
+        <Route path="/admin/dashboard" element={<Layout><AdminDashboard /></Layout>} />
       </Routes>
     </Router>
   );

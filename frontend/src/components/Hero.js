@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronRight, Zap } from 'lucide-react';
+import { ChevronRight, Zap, FileText } from 'lucide-react';
 import playingImg from '../assets/E-Sport.png';
 
 const Hero = () => {
@@ -72,6 +72,11 @@ const Hero = () => {
               <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             
+            <Link to="/rules" className="group inline-flex items-center justify-center px-8 py-4 bg-transparent border border-white/20 text-white font-bold text-lg italic uppercase tracking-wider hover:bg-white/5 transition-all">
+              <FileText className="mr-2 w-5 h-5 text-krafton-yellow" />
+              Rules & Regulations
+            </Link>
+
             <button className="group inline-flex items-center justify-center px-8 py-4 bg-transparent border border-white/20 text-white font-bold text-lg italic uppercase tracking-wider hover:bg-white/5 transition-all">
               <Zap className="mr-2 w-5 h-5 text-krafton-yellow" />
               Watch Trailer
