@@ -27,7 +27,9 @@ const AdminLogin = () => {
     e.preventDefault();
     
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/admin/login`, {
+      // Ensure API URL is correctly formatted and remove any trailing slashes
+      const baseUrl = (process.env.REACT_APP_API_URL || 'http://localhost:5000').replace(/\/$/, '');
+      const response = await fetch(`${baseUrl}/admin/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -37,7 +37,11 @@ const registrationSchema = new mongoose.Schema({
 
 const Registration = mongoose.model('Registration', registrationSchema);
 
-app.use(cors());
+app.use(cors({
+    origin: '*', // Allow all origins for development/production (adjust as needed for security)
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(bodyParser.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 

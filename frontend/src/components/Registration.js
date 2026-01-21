@@ -118,8 +118,8 @@ const Registration = () => {
         data.append(key, formData[key]);
       });
 
-      const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
-      const response = await fetch(`${apiUrl}/register`, {
+      const baseUrl = (process.env.REACT_APP_API_URL || 'http://localhost:5000').replace(/\/$/, '');
+      const response = await fetch(`${baseUrl}/register`, {
         method: 'POST',
         body: data,
       });
