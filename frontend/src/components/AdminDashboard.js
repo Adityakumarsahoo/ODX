@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Users, LogOut, Trophy, AlertCircle, Eye, X, Check } from 'lucide-react';
+import { Users, LogOut, Trophy, AlertCircle, Eye, X, Check, Trash2 } from 'lucide-react';
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
