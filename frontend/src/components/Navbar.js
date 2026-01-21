@@ -18,11 +18,11 @@ const Navbar = () => {
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b border-transparent ${
       isScrolled ? 'bg-black/90 backdrop-blur-md border-white/10 py-4' : 'bg-transparent py-6'
     }`}>
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 flex items-center justify-between">
         {/* Logo Section */}
-        <Link to="/" className="flex items-center gap-4 group">
+        <Link to="/" className="flex items-center gap-2 md:gap-4 group">
           <div className="relative">
-            <div className="text-white font-black text-3xl tracking-tighter italic group-hover:scale-105 transition-transform" 
+            <div className="text-white font-black text-2xl md:text-3xl tracking-tighter italic group-hover:scale-105 transition-transform" 
                  style={{ textShadow: '0 0 10px rgba(255,222,0,0.5)' }}>
               ODx
             </div>

@@ -56,11 +56,11 @@ const AdminLogin = () => {
       </div>
 
       <div className="relative z-10 w-full max-w-md px-4">
-        <div className="bg-krafton-dark-gray/80 backdrop-blur-xl border border-white/10 p-8 rounded-xl shadow-2xl relative overflow-hidden">
+        <div className="bg-krafton-dark-gray/80 backdrop-blur-xl border border-white/10 p-6 md:p-8 rounded-xl shadow-2xl relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-krafton-yellow to-yellow-600" />
           
-          <div className="text-center mb-8">
-            <h1 className="text-3xl font-black italic text-white mb-2 tracking-tighter uppercase">
+          <div className="text-center mb-6 md:mb-8">
+            <h1 className="text-2xl md:text-3xl font-black italic text-white mb-2 tracking-tighter uppercase">
               Admin <span className="text-transparent bg-clip-text bg-gradient-to-r from-krafton-yellow to-yellow-600">Portal</span>
             </h1>
             <p className="text-gray-400 text-xs tracking-widest uppercase">

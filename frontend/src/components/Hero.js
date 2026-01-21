@@ -25,16 +25,16 @@ const Hero = () => {
         <div className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-purple-900 rounded-full blur-[120px]"></div>
       </div>
 
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 py-20 flex flex-col md:flex-row items-center gap-12">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 md:px-12 py-12 md:py-20 flex flex-col md:flex-row items-center gap-8 md:gap-12">
         
         {/* Left Content */}
-        <div className="flex-1 space-y-8 animate-fade-in-up">
+        <div className="flex-1 space-y-6 md:space-y-8 animate-fade-in-up">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-yellow-500/10 border border-yellow-500/20 rounded-full">
             <span className="w-2 h-2 rounded-full bg-krafton-yellow animate-pulse"></span>
-            <span className="text-krafton-yellow text-xs font-bold tracking-wider uppercase">Official Tournament 2026</span>
+            <span className="text-krafton-yellow text-[10px] md:text-xs font-bold tracking-wider uppercase">Official Tournament 2026</span>
           </div>
 
-          <h1 className="text-6xl md:text-8xl font-black italic text-white leading-tight tracking-tighter">
+          <h1 className="text-4xl sm:text-6xl md:text-8xl font-black italic text-white leading-tight tracking-tighter">
             ODx <br/>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-krafton-yellow to-yellow-600 drop-shadow-[0_0_15px_rgba(255,222,0,0.5)]">
               BATTLEGROUND
@@ -43,7 +43,7 @@ const Hero = () => {
             <span className="text-4xl md:text-6xl text-gray-200">TOURNAMENT</span> 🔥
           </h1>
           
-          <div className="max-w-xl text-gray-400 text-lg md:text-xl leading-relaxed border-l-4 border-krafton-yellow pl-6">
+          <div className="max-w-xl text-gray-400 text-base md:text-xl leading-relaxed border-l-4 border-krafton-yellow pl-4 md:pl-6">
             <p>
               Get ready for an action-packed gaming showdown presented by the <strong className="text-white">ODx Team</strong>! 
               Join the ultimate battleground challenge starting <strong className="text-white">27 January 2026</strong>.
@@ -51,29 +51,29 @@ const Hero = () => {
           </div>
           
           {/* Stats/Info Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 pt-4">
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-4 rounded-xl hover:bg-white/10 transition-colors">
-              <div className="text-krafton-yellow font-bold text-2xl">₹100</div>
-              <div className="text-gray-500 text-xs uppercase tracking-wider font-bold">Entry Fee</div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 pt-4">
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-3 md:p-4 rounded-xl hover:bg-white/10 transition-colors">
+              <div className="text-krafton-yellow font-bold text-xl md:text-2xl">₹100</div>
+              <div className="text-gray-500 text-[10px] md:text-xs uppercase tracking-wider font-bold">Entry Fee</div>
             </div>
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-4 rounded-xl hover:bg-white/10 transition-colors">
-              <div className="text-krafton-yellow font-bold text-2xl">₹5/Kill</div>
-              <div className="text-gray-500 text-xs uppercase tracking-wider font-bold">Reward</div>
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-3 md:p-4 rounded-xl hover:bg-white/10 transition-colors">
+              <div className="text-krafton-yellow font-bold text-xl md:text-2xl">₹5/Kill</div>
+              <div className="text-gray-500 text-[10px] md:text-xs uppercase tracking-wider font-bold">Reward</div>
             </div>
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-4 rounded-xl hover:bg-white/10 transition-colors col-span-2 md:col-span-1">
-              <div className="text-krafton-yellow font-bold text-2xl">₹1,000</div>
-              <div className="text-gray-500 text-xs uppercase tracking-wider font-bold">Prize Pool</div>
+            <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-3 md:p-4 rounded-xl hover:bg-white/10 transition-colors col-span-2 md:col-span-1">
+              <div className="text-krafton-yellow font-bold text-xl md:text-2xl">₹1,000</div>
+              <div className="text-gray-500 text-[10px] md:text-xs uppercase tracking-wider font-bold">Prize Pool</div>
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 pt-4">
-            <Link to="/registration" className="group relative inline-flex items-center justify-center px-8 py-4 bg-krafton-yellow text-black font-black text-lg italic uppercase tracking-wider clip-path-polygon hover:bg-yellow-400 transition-all transform hover:-translate-y-1 shadow-[0_0_20px_rgba(255,222,0,0.4)]">
+          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 pt-4">
+            <Link to="/registration" className="group relative inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 bg-krafton-yellow text-black font-black text-base md:text-lg italic uppercase tracking-wider clip-path-polygon hover:bg-yellow-400 transition-all transform hover:-translate-y-1 shadow-[0_0_20px_rgba(255,222,0,0.4)]">
               <span>Join Tournament</span>
-              <ChevronRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <ChevronRight className="ml-2 w-4 md:w-5 h-4 md:h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
             
-            <Link to="/rules" className="group inline-flex items-center justify-center px-8 py-4 bg-transparent border border-white/20 text-white font-bold text-lg italic uppercase tracking-wider hover:bg-white/5 transition-all">
-              <FileText className="mr-2 w-5 h-5 text-krafton-yellow" />
+            <Link to="/rules" className="group inline-flex items-center justify-center px-6 md:px-8 py-3 md:py-4 bg-transparent border border-white/20 text-white font-bold text-base md:text-lg italic uppercase tracking-wider hover:bg-white/5 transition-all">
+              <FileText className="mr-2 w-4 md:w-5 h-4 md:h-5 text-krafton-yellow" />
               Rules & Regulations
             </Link>
 

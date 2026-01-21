@@ -25,52 +25,52 @@ const Rankings = () => {
     <div className="min-h-screen bg-black pt-24 pb-12 px-4 md:px-8 font-sans">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16 relative">
-          <h1 className="text-5xl md:text-7xl font-black italic text-white mb-2 tracking-tighter uppercase">
+        <div className="text-center mb-12 md:mb-16 relative">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-black italic text-white mb-2 tracking-tighter uppercase">
             Season 5 <span className="text-transparent bg-clip-text bg-gradient-to-r from-krafton-yellow to-yellow-600">Rankings</span>
           </h1>
-          <div className="h-1 w-24 bg-krafton-yellow mx-auto"></div>
-          <p className="text-gray-400 mt-4 uppercase tracking-widest text-sm">Official Leaderboard • Week 4</p>
+          <div className="h-1 w-16 md:w-24 bg-krafton-yellow mx-auto"></div>
+          <p className="text-gray-400 mt-4 uppercase tracking-widest text-xs md:text-sm">Official Leaderboard • Week 4</p>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Main Leaderboard */}
           <div className="lg:col-span-2 space-y-4">
              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+                <h2 className="text-xl md:text-2xl font-bold text-white flex items-center gap-2">
                   <Trophy className="text-krafton-yellow" /> Standings
                 </h2>
                 <div className="flex gap-2">
-                  <button className="px-3 py-1 bg-krafton-yellow text-black font-bold text-xs uppercase rounded">Overall</button>
-                  <button className="px-3 py-1 bg-gray-800 text-gray-400 font-bold text-xs uppercase rounded hover:bg-gray-700">Weekly</button>
+                  <button className="px-2 md:px-3 py-1 bg-krafton-yellow text-black font-bold text-[10px] md:text-xs uppercase rounded">Overall</button>
+                  <button className="px-2 md:px-3 py-1 bg-gray-800 text-gray-400 font-bold text-[10px] md:text-xs uppercase rounded hover:bg-gray-700">Weekly</button>
                 </div>
              </div>
 
              <div className="bg-gray-900/50 border border-white/10 rounded-xl overflow-hidden backdrop-blur-sm">
-               <div className="grid grid-cols-12 bg-black/60 p-4 text-xs font-bold text-gray-500 uppercase tracking-wider border-b border-white/5">
+               <div className="grid grid-cols-12 bg-black/60 p-3 md:p-4 text-[10px] md:text-xs font-bold text-gray-500 uppercase tracking-wider border-b border-white/5">
                  <div className="col-span-1 text-center">#</div>
-                 <div className="col-span-4 md:col-span-5">Team</div>
+                 <div className="col-span-5 md:col-span-5">Team</div>
                  <div className="col-span-2 text-center">Matches</div>
                  <div className="col-span-2 text-center">WWCD</div>
                  <div className="col-span-1 text-center hidden md:block">Kills</div>
-                 <div className="col-span-2 md:col-span-1 text-right pr-4">Pts</div>
+                 <div className="col-span-2 md:col-span-1 text-right pr-2 md:pr-4">Pts</div>
                </div>
                
                {leaderboardData.map((team, index) => (
-                 <div key={index} className={`grid grid-cols-12 p-4 items-center border-b border-white/5 hover:bg-white/5 transition-colors ${index < 3 ? 'bg-gradient-to-r from-yellow-500/5 to-transparent' : ''}`}>
-                   <div className="col-span-1 text-center font-black text-lg text-gray-600 italic">
+                 <div key={index} className={`grid grid-cols-12 p-3 md:p-4 items-center border-b border-white/5 hover:bg-white/5 transition-colors ${index < 3 ? 'bg-gradient-to-r from-yellow-500/5 to-transparent' : ''}`}>
+                   <div className="col-span-1 text-center font-black text-base md:text-lg text-gray-600 italic">
                      {index === 0 ? '🥇' : index === 1 ? '🥈' : index === 2 ? '🥉' : team.rank}
                    </div>
-                   <div className="col-span-4 md:col-span-5 font-bold text-white text-sm md:text-base flex items-center gap-3">
-                     <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-black ${index === 0 ? 'bg-krafton-yellow text-black' : 'bg-gray-800 text-gray-400'}`}>
+                   <div className="col-span-5 md:col-span-5 font-bold text-white text-xs md:text-base flex items-center gap-2 md:gap-3">
+                     <div className={`w-6 h-6 md:w-8 md:h-8 rounded-full flex items-center justify-center text-[10px] md:text-xs font-black ${index === 0 ? 'bg-krafton-yellow text-black' : 'bg-gray-800 text-gray-400'}`}>
                         {team.team.substring(0, 1)}
                      </div>
-                     {team.team}
+                     <span className="truncate">{team.team}</span>
                    </div>
-                   <div className="col-span-2 text-center text-gray-400 font-medium">{team.matches}</div>
-                   <div className="col-span-2 text-center text-white font-bold">{team.wwcd}</div>
+                   <div className="col-span-2 text-center text-gray-400 font-medium text-xs md:text-base">{team.matches}</div>
+                   <div className="col-span-2 text-center text-white font-bold text-xs md:text-base">{team.wwcd}</div>
                    <div className="col-span-1 text-center text-gray-400 hidden md:block">{team.kills}</div>
-                   <div className="col-span-2 md:col-span-1 text-right pr-4 text-krafton-yellow font-black text-lg">{team.points}</div>
+                   <div className="col-span-2 md:col-span-1 text-right pr-2 md:pr-4 text-krafton-yellow font-black text-base md:text-lg">{team.points}</div>
                  </div>
                ))}
              </div>

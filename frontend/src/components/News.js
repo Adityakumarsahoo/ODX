@@ -33,13 +33,13 @@ const News = () => {
   return (
     <div className="min-h-screen bg-black pt-24 pb-12 px-4 md:px-8 font-sans">
       <div className="max-w-7xl mx-auto">
-        <div className="flex items-end justify-between mb-12 border-b border-white/10 pb-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 md:mb-12 border-b border-white/10 pb-6 md:pb-8">
           <div>
-            <h1 className="text-5xl md:text-7xl font-black italic text-white mb-2 tracking-tighter uppercase">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-black italic text-white mb-2 tracking-tighter uppercase">
               Latest <span className="text-transparent bg-clip-text bg-gradient-to-r from-krafton-yellow to-yellow-600">News</span>
             </h1>
           </div>
-          <button className="hidden md:flex items-center gap-2 text-krafton-yellow font-bold uppercase tracking-widest hover:text-white transition-colors">
+          <button className="hidden md:flex items-center gap-2 text-krafton-yellow font-bold uppercase tracking-widest hover:text-white transition-colors mt-4 md:mt-0">
             View Archive <ArrowRight size={20} />
           </button>
         </div>

@@ -1,6 +1,67 @@
 import React, { useState, useEffect } from 'react';
-import { Trophy, Users, Crosshair, Shield, CreditCard, Upload, ChevronRight } from 'lucide-react';
+import { Trophy, Users, Crosshair, Shield, CreditCard, Upload, ChevronRight, User, Phone, Mail, Hash, Gamepad } from 'lucide-react';
 import qrCodeImg from '../assets/Qr-code.png';
+
+// --- Sub-components defined OUTSIDE the main component to prevent re-renders ---
+
+const SectionTitle = ({ icon: Icon, title }) => (
+  <div className="flex items-center gap-3 mb-6 border-b border-gray-800 pb-2">
+    <Icon className="text-krafton-yellow" size={24} />
+    <h3 className="text-xl font-bold text-white uppercase tracking-wider">{title}</h3>
+  </div>
+);
+
+const InputGroup = ({ label, required, children }) => (
+  <div className="mb-6 group">
+    <label className="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2 group-focus-within:text-krafton-yellow transition-colors">
+      {label} {required && <span className="text-red-500">*</span>}
+    </label>
+    {children}
+  </div>
+);
+
+const TextInput = ({ name, placeholder, type = "text", required, icon: Icon, value, onChange }) => (
+  <div className="relative group/input">
+    {Icon && (
+      <div className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 group-focus-within/input:text-krafton-yellow transition-colors duration-300 pointer-events-none z-10">
+        <Icon size={18} />
+      </div>
+    )}
+    <input
+      type={type}
+      name={name}
+      required={required}
+      placeholder={placeholder}
+      value={value || ''}
+      onChange={onChange}
+      className={`w-full bg-krafton-dark-gray/50 border border-gray-700 text-white ${Icon ? 'pl-12' : 'px-4'} pr-4 py-3.5 rounded-lg focus:outline-none focus:border-krafton-yellow focus:ring-1 focus:ring-krafton-yellow transition-all duration-300 placeholder-gray-600 font-medium hover:bg-krafton-dark-gray/70`}
+    />
+    <div className="absolute inset-0 border border-transparent group-hover/input:border-gray-600 pointer-events-none rounded-lg transition-colors duration-300" />
+  </div>
+);
+
+const RadioOption = ({ name, value, label, current, required, onChange }) => (
+  <label className={`
+    relative flex items-center justify-center p-2 md:p-4 cursor-pointer rounded border transition-all duration-300
+    ${current === value 
+      ? 'bg-krafton-yellow/10 border-krafton-yellow text-krafton-yellow shadow-[0_0_15px_rgba(255,222,0,0.2)]' 
+      : 'bg-krafton-dark-gray/30 border-gray-700 text-gray-400 hover:border-gray-500 hover:bg-krafton-dark-gray/50 hover:text-gray-200'}
+  `}>
+    <input
+      type="radio"
+      name={name}
+      value={value}
+      className="hidden"
+      onChange={onChange}
+      checked={current === value}
+      required={required}
+    />
+    <span className="font-bold uppercase tracking-wider text-xs md:text-sm">{label}</span>
+    {current === value && (
+      <div className="absolute inset-0 border-2 border-krafton-yellow rounded opacity-50 blur-[2px]" />
+    )}
+  </label>
+);
 
 const Registration = () => {
   const [formData, setFormData] = useState({
@@ -91,59 +152,6 @@ const Registration = () => {
     }
   };
 
-  const SectionTitle = ({ icon: Icon, title }) => (
-    <div className="flex items-center gap-3 mb-6 border-b border-gray-800 pb-2">
-      <Icon className="text-krafton-yellow" size={24} />
-      <h3 className="text-xl font-bold text-white uppercase tracking-wider">{title}</h3>
-    </div>
-  );
-
-  const InputGroup = ({ label, required, children }) => (
-    <div className="mb-6 group">
-      <label className="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2 group-focus-within:text-krafton-yellow transition-colors">
-        {label} {required && <span className="text-red-500">*</span>}
-      </label>
-      {children}
-    </div>
-  );
-
-  const TextInput = ({ name, placeholder, type = "text", required }) => (
-    <div className="relative">
-      <input
-        type={type}
-        name={name}
-        required={required}
-        placeholder={placeholder}
-        className="w-full bg-krafton-dark-gray/50 border border-gray-700 text-white px-4 py-3 rounded focus:outline-none focus:border-krafton-yellow focus:ring-1 focus:ring-krafton-yellow transition-all placeholder-gray-600 font-medium"
-        onChange={handleChange}
-      />
-      <div className="absolute inset-0 border border-transparent group-hover:border-gray-600 pointer-events-none rounded transition-colors" />
-    </div>
-  );
-
-  const RadioOption = ({ name, value, label, current, required }) => (
-    <label className={`
-      relative flex items-center justify-center p-3 md:p-4 cursor-pointer rounded border transition-all duration-300
-      ${current === value 
-        ? 'bg-krafton-yellow/10 border-krafton-yellow text-krafton-yellow shadow-[0_0_15px_rgba(255,222,0,0.2)]' 
-        : 'bg-krafton-dark-gray/30 border-gray-700 text-gray-400 hover:border-gray-500 hover:bg-krafton-dark-gray/50 hover:text-gray-200'}
-    `}>
-      <input
-        type="radio"
-        name={name}
-        value={value}
-        className="hidden"
-        onChange={handleChange}
-        checked={current === value}
-        required={required}
-      />
-      <span className="font-bold uppercase tracking-wider text-xs md:text-sm">{label}</span>
-      {current === value && (
-        <div className="absolute inset-0 border-2 border-krafton-yellow rounded opacity-50 blur-[2px]" />
-      )}
-    </label>
-  );
-
   return (
     <div className="min-h-screen bg-krafton-black relative font-sans overflow-x-hidden">
       {/* Background Image with Overlay */}
@@ -153,10 +161,10 @@ const Registration = () => {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-transparent via-krafton-black/90 to-krafton-black" />
       </div>
 
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 py-8 md:py-16">
+      <div className="relative z-10 max-w-5xl mx-auto px-3 sm:px-6 py-6 md:py-16">
         {/* Header */}
-        <div className="text-center mb-10 md:mb-16">
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-black italic text-white mb-4 tracking-tighter drop-shadow-2xl"
+        <div className="text-center mb-8 md:mb-16">
+          <h1 className="text-3xl sm:text-6xl md:text-7xl font-black italic text-white mb-4 tracking-tighter drop-shadow-2xl"
               style={{ textShadow: '0 0 30px rgba(255, 222, 0, 0.4)' }}>
             ODx <span className="text-transparent bg-clip-text bg-gradient-to-r from-krafton-yellow via-yellow-400 to-yellow-600">TOURNAMENT</span>
           </h1>
@@ -171,7 +179,7 @@ const Registration = () => {
 
         <form onSubmit={handleSubmit} className="space-y-6 md:space-y-10">
           {/* Tournament Info Card */}
-          <div className="bg-krafton-dark-gray/80 backdrop-blur-xl border border-white/10 p-6 md:p-8 rounded-2xl shadow-2xl relative overflow-hidden group hover:border-white/20 transition-all duration-300">
+          <div className="bg-krafton-dark-gray/80 backdrop-blur-xl border border-white/10 p-4 md:p-8 rounded-2xl shadow-2xl relative overflow-hidden group hover:border-white/20 transition-all duration-300">
             <div className="absolute top-0 left-0 w-1 md:w-2 h-full bg-gradient-to-b from-krafton-yellow to-yellow-600" />
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div>
@@ -220,57 +228,114 @@ const Registration = () => {
           </div>
 
           {/* Player Details */}
-          <div className="bg-krafton-dark-gray/60 backdrop-blur-md border border-white/5 p-6 md:p-8 rounded-2xl shadow-xl">
+          <div className="bg-krafton-dark-gray/60 backdrop-blur-md border border-white/5 p-4 md:p-8 rounded-2xl shadow-xl">
             <SectionTitle icon={Users} title="Player Information" />
             
             <div className="grid md:grid-cols-2 gap-6 md:gap-8">
               <InputGroup label="Full Name" required>
-                <TextInput name="fullName" placeholder="ENTER YOUR FULL NAME" required />
+                <TextInput 
+                  name="fullName" 
+                  placeholder="ENTER YOUR FULL NAME" 
+                  required 
+                  icon={User} 
+                  value={formData.fullName}
+                  onChange={handleChange}
+                />
               </InputGroup>
 
               <InputGroup label="In-Game Name (IGN)" required>
-                <TextInput name="inGameName" placeholder="ENTER EXACT IGN" required />
+                <TextInput 
+                  name="inGameName" 
+                  placeholder="ENTER EXACT IGN" 
+                  required 
+                  icon={Gamepad} 
+                  value={formData.inGameName}
+                  onChange={handleChange}
+                />
               </InputGroup>
 
               <InputGroup label="Player ID / Character ID" required>
-                <TextInput name="playerId" placeholder="5123456789" required />
+                <TextInput 
+                  name="playerId" 
+                  placeholder="5123456789" 
+                  required 
+                  icon={Hash} 
+                  value={formData.playerId}
+                  onChange={handleChange}
+                />
               </InputGroup>
 
               <InputGroup label="Mobile Number" required>
-                <TextInput name="mobileNumber" type="tel" placeholder="10 DIGIT NUMBER" required />
+                <TextInput 
+                  name="mobileNumber" 
+                  type="tel" 
+                  placeholder="10 DIGIT NUMBER" 
+                  required 
+                  icon={Phone} 
+                  value={formData.mobileNumber}
+                  onChange={handleChange}
+                />
               </InputGroup>
             </div>
 
             <div className="mt-6">
               <InputGroup label="Email Address">
-                <TextInput name="email" type="email" placeholder="YOUR@EMAIL.COM" />
+                <TextInput 
+                  name="email" 
+                  type="email" 
+                  placeholder="YOUR@EMAIL.COM" 
+                  icon={Mail} 
+                  value={formData.email}
+                  onChange={handleChange}
+                />
               </InputGroup>
             </div>
           </div>
 
           {/* Team Details */}
-          <div className="bg-krafton-dark-gray/60 backdrop-blur-md border border-white/5 p-6 md:p-8 rounded-2xl shadow-xl">
+          <div className="bg-krafton-dark-gray/60 backdrop-blur-md border border-white/5 p-4 md:p-8 rounded-2xl shadow-xl">
             <SectionTitle icon={Crosshair} title="Squad Configuration" />
             
             <div className="mb-8">
               <label className="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Team Type *</label>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {['Solo', 'Duo', 'Squad'].map(type => (
-                  <RadioOption key={type} name="teamType" value={type} label={type} current={formData.teamType} required />
+                  <RadioOption 
+                    key={type} 
+                    name="teamType" 
+                    value={type} 
+                    label={type} 
+                    current={formData.teamType} 
+                    required 
+                    onChange={handleChange}
+                  />
                 ))}
               </div>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">
               <InputGroup label="Team Name">
-                <TextInput name="teamName" placeholder="E.G. TEAM SOUL" />
+                <TextInput 
+                  name="teamName" 
+                  placeholder="E.G. TEAM SOUL" 
+                  value={formData.teamName}
+                  onChange={handleChange}
+                />
               </InputGroup>
 
               <div className="mb-6">
                 <label className="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Players Count *</label>
                 <div className="grid grid-cols-4 gap-3">
                   {['1', '2', '3', '4'].map(count => (
-                    <RadioOption key={count} name="playerCount" value={count} label={count} current={formData.playerCount} required />
+                    <RadioOption 
+                      key={count} 
+                      name="playerCount" 
+                      value={count} 
+                      label={count} 
+                      current={formData.playerCount} 
+                      required 
+                      onChange={handleChange}
+                    />
                   ))}
                 </div>
               </div>
@@ -278,7 +343,7 @@ const Registration = () => {
           </div>
 
           {/* Payment Section */}
-          <div className="bg-krafton-dark-gray/60 backdrop-blur-md border border-white/5 p-6 md:p-8 rounded-2xl shadow-xl">
+          <div className="bg-krafton-dark-gray/60 backdrop-blur-md border border-white/5 p-4 md:p-8 rounded-2xl shadow-xl">
             <SectionTitle icon={CreditCard} title="Payment Verification" />
             
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 mb-8">
@@ -287,7 +352,15 @@ const Registration = () => {
                     <label className="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">Payment Mode *</label>
                     <div className="grid grid-cols-2 gap-3">
                       {['UPI', 'PhonePe', 'GPay', 'Paytm'].map(mode => (
-                        <RadioOption key={mode} name="paymentMode" value={mode} label={mode} current={formData.paymentMode} required />
+                        <RadioOption 
+                          key={mode} 
+                          name="paymentMode" 
+                          value={mode} 
+                          label={mode} 
+                          current={formData.paymentMode} 
+                          required 
+                          onChange={handleChange}
+                        />
                       ))}
                     </div>
                   </div>
@@ -307,8 +380,8 @@ const Registration = () => {
                <div className="flex flex-col justify-between">
                  <InputGroup label="Transaction Screenshot" required>
                     <label className={`
-                      flex flex-col items-center justify-center h-full min-h-[250px]
-                      border-2 border-dashed rounded-xl p-8 text-center transition-all duration-300 cursor-pointer
+                      flex flex-col items-center justify-center h-full min-h-[200px] md:min-h-[250px]
+                      border-2 border-dashed rounded-xl p-4 md:p-8 text-center transition-all duration-300 cursor-pointer
                       ${formData.paymentScreenshot 
                         ? 'border-krafton-yellow bg-krafton-yellow/5' 
                         : 'border-gray-700 bg-black/20 hover:border-gray-500 hover:bg-black/30'}
@@ -355,7 +428,7 @@ const Registration = () => {
           </div>
 
           {/* Final Checks */}
-          <div className="bg-krafton-dark-gray/60 backdrop-blur-md border border-white/5 p-6 md:p-8 rounded-2xl shadow-xl">
+          <div className="bg-krafton-dark-gray/60 backdrop-blur-md border border-white/5 p-4 md:p-8 rounded-2xl shadow-xl">
              <SectionTitle icon={Shield} title="Terms & Verification" />
 
              <div className="space-y-5 bg-black/20 p-6 rounded-xl border border-white/5">
@@ -403,7 +476,14 @@ const Registration = () => {
 
              <div className="mt-8 pt-8 border-t border-gray-800">
                <InputGroup label="WhatsApp Number for Updates" required>
-                  <TextInput name="whatsappNumber" type="tel" placeholder="FOR ROOM ID & PASS" required />
+                  <TextInput 
+                    name="whatsappNumber" 
+                    type="tel" 
+                    placeholder="FOR ROOM ID & PASS" 
+                    required 
+                    value={formData.whatsappNumber}
+                    onChange={handleChange}
+                  />
                </InputGroup>
              </div>
           </div>
@@ -412,7 +492,7 @@ const Registration = () => {
           <div className="pt-8 pb-20">
             <button
               type="submit"
-              className="w-full bg-gradient-to-r from-krafton-yellow to-yellow-500 text-black text-xl md:text-2xl font-black italic uppercase tracking-tighter py-6 px-8 rounded-xl hover:from-yellow-400 hover:to-yellow-300 hover:scale-[1.01] active:scale-[0.99] transition-all shadow-[0_0_30px_rgba(255,222,0,0.3)] flex items-center justify-center gap-4 group"
+              className="w-full bg-gradient-to-r from-krafton-yellow to-yellow-500 text-black text-lg md:text-2xl font-black italic uppercase tracking-tighter py-4 px-6 md:py-6 md:px-8 rounded-xl hover:from-yellow-400 hover:to-yellow-300 hover:scale-[1.01] active:scale-[0.99] transition-all shadow-[0_0_30px_rgba(255,222,0,0.3)] flex items-center justify-center gap-4 group"
             >
               Confirm Registration <ChevronRight size={32} className="group-hover:translate-x-1 transition-transform" />
             </button>

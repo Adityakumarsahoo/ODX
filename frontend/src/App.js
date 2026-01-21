@@ -24,21 +24,21 @@ const Layout = ({ children }) => {
       </main>
 
       {/* Floating Action Buttons */}
-      <div className="fixed right-8 bottom-8 z-50 flex flex-col items-end gap-3">
+      <div className="fixed right-4 bottom-4 md:right-8 md:bottom-8 z-50 flex flex-col items-end gap-3">
         {showHelp && (
             <div className="flex flex-col gap-3 mb-2 animate-fade-in-up">
-              <a href="https://wa.me/918018389108" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between gap-3 bg-[#25D366] hover:bg-[#128C7E] text-white px-5 py-3 rounded-full shadow-xl transition-all hover:scale-105 min-w-[160px]">
-                <span className="font-bold text-sm tracking-wide">WhatsApp</span>
+              <a href="https://wa.me/918018389108" target="_blank" rel="noopener noreferrer" className="flex items-center justify-between gap-3 bg-[#25D366] hover:bg-[#128C7E] text-white px-4 py-2 md:px-5 md:py-3 rounded-full shadow-xl transition-all hover:scale-105 min-w-[140px] md:min-w-[160px]">
+                <span className="font-bold text-xs md:text-sm tracking-wide">WhatsApp</span>
                 <MessageCircle size={20} />
               </a>
               
-              <a href="mailto:toadityakumarsahoo@gmail.com" className="flex items-center justify-between gap-3 bg-blue-600 hover:bg-blue-700 text-white px-5 py-3 rounded-full shadow-xl transition-all hover:scale-105 min-w-[160px]">
-                <span className="font-bold text-sm tracking-wide">Email Us</span>
+              <a href="mailto:toadityakumarsahoo@gmail.com" className="flex items-center justify-between gap-3 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 md:px-5 md:py-3 rounded-full shadow-xl transition-all hover:scale-105 min-w-[140px] md:min-w-[160px]">
+                <span className="font-bold text-xs md:text-sm tracking-wide">Email Us</span>
                 <Mail size={20} />
               </a>
 
-              <button className="flex items-center justify-between gap-3 bg-gray-700 hover:bg-gray-600 text-white px-5 py-3 rounded-full shadow-xl transition-all hover:scale-105 min-w-[160px]">
-                <span className="font-bold text-sm tracking-wide">FAQs</span>
+              <button className="flex items-center justify-between gap-3 bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 md:px-5 md:py-3 rounded-full shadow-xl transition-all hover:scale-105 min-w-[140px] md:min-w-[160px]">
+                <span className="font-bold text-xs md:text-sm tracking-wide">FAQs</span>
                 <HelpCircle size={20} />
               </button>
             </div>
@@ -46,13 +46,13 @@ const Layout = ({ children }) => {
 
         <button 
           onClick={() => setShowHelp(!showHelp)}
-          className={`p-4 rounded-full shadow-2xl transition-all border border-white/10 ${
+          className={`p-3 md:p-4 rounded-full shadow-2xl transition-all border border-white/10 ${
             showHelp 
               ? 'bg-krafton-yellow text-black rotate-90' 
               : 'bg-gray-800 text-white hover:bg-gray-700'
           }`}
         >
-          {showHelp ? <X size={24} /> : <MessageSquare size={24} />}
+          {showHelp ? <X size={20} className="md:w-6 md:h-6" /> : <MessageSquare size={20} className="md:w-6 md:h-6" />}
         </button>
       </div>
       

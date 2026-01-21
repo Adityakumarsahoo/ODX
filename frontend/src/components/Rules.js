@@ -18,11 +18,11 @@ const Rules = () => {
   return (
     <div className="min-h-screen bg-krafton-black pt-24 pb-12 px-4 sm:px-6 lg:px-8 font-sans">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16 animate-fade-in-up">
-          <h1 className="text-5xl md:text-7xl font-black italic text-white mb-6 uppercase tracking-tighter">
+        <div className="text-center mb-12 md:mb-16 animate-fade-in-up">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-black italic text-white mb-4 md:mb-6 uppercase tracking-tighter">
             Rules <span className="text-krafton-yellow">&</span> Regulations
           </h1>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto border-l-4 border-krafton-yellow pl-4 text-left">
+          <p className="text-gray-400 text-base md:text-lg max-w-2xl mx-auto border-l-4 border-krafton-yellow pl-4 text-left">
             Fair play and sportsmanship are the cornerstones of our tournament. Please read the following rules carefully before registering.
           </p>
         </div>

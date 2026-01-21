@@ -43,14 +43,14 @@ const Tournaments = () => {
   return (
     <div className="min-h-screen bg-black pt-24 pb-12 px-4 md:px-8 font-sans">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h1 className="text-5xl md:text-7xl font-black italic text-white mb-2 tracking-tighter uppercase">
+        <div className="text-center mb-12 md:mb-16">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-black italic text-white mb-2 tracking-tighter uppercase">
             Upcoming <span className="text-transparent bg-clip-text bg-gradient-to-r from-krafton-yellow to-yellow-600">Events</span>
           </h1>
-          <div className="h-1 w-24 bg-krafton-yellow mx-auto"></div>
+          <div className="h-1 w-16 md:w-24 bg-krafton-yellow mx-auto"></div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {tournaments.map((tournament) => (
             <Link to="/registration" key={tournament.id} className="group bg-gray-900/50 border border-white/10 rounded-xl overflow-hidden hover:border-krafton-yellow/50 transition-all hover:transform hover:-translate-y-1 block">
               <div className="relative h-48 overflow-hidden">
