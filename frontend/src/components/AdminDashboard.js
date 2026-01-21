@@ -144,13 +144,22 @@ const AdminDashboard = () => {
                         </span>
                       </td>
                       <td className="p-4">
-                        <button 
-                          onClick={() => setSelectedRegistration(reg)}
-                          className="p-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors text-krafton-yellow"
-                          title="View Details"
-                        >
-                          <Eye size={18} />
-                        </button>
+                        <div className="flex items-center gap-2">
+                          <button 
+                            onClick={() => setSelectedRegistration(reg)}
+                            className="p-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors text-krafton-yellow"
+                            title="View Details"
+                          >
+                            <Eye size={18} />
+                          </button>
+                          <button 
+                            onClick={() => handleDelete(reg._id)}
+                            className="p-2 bg-red-500/10 hover:bg-red-500/20 rounded-full transition-colors text-red-500"
+                            title="Delete Registration"
+                          >
+                            <Trash2 size={18} />
+                          </button>
+                        </div>
                       </td>
                     </tr>
                   ))

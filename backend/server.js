@@ -152,6 +152,7 @@ app.get('/admin/registrations', async (req, res) => {
         
         // Transform data to match frontend expectation (similar to Excel structure for compatibility)
         const formattedData = registrations.map(reg => ({
+            '_id': reg._id,
             'Full Name': reg.fullName,
             'In-Game Name': reg.inGameName,
             'Player ID': reg.playerId,
@@ -173,6 +174,24 @@ app.get('/admin/registrations', async (req, res) => {
     } catch (error) {
         console.error('Error fetching registrations:', error);
         res.status(500).json({ message: 'Failed to fetch registrations' });
+    }
+});
+
+// Admin Delete Registration Endpoint
+app.delete('/admin/registrations/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const deletedRegistration = await Registration.findByIdAndDelete(id);
+        
+        if (!deletedRegistration) {
+            return res.status(404).json({ message: 'Registration not found' });
+        }
+
+        console.log('Deleted registration:', id);
+        res.status(200).json({ message: 'Registration deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting registration:', error);
+        res.status(500).json({ message: 'Failed to delete registration' });
     }
 });
 
