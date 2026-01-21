@@ -38,6 +38,26 @@ const AdminDashboard = () => {
     navigate('/admin');
   };
 
+  const handleDelete = async (id) => {
+    if (window.confirm('Are you sure you want to delete this registration? This action cannot be undone.')) {
+      try {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/admin/registrations/${id}`, {
+          method: 'DELETE',
+        });
+
+        if (response.ok) {
+          setRegistrations(registrations.filter(reg => reg._id !== id));
+          alert('Registration deleted successfully');
+        } else {
+          alert('Failed to delete registration');
+        }
+      } catch (error) {
+        console.error('Error deleting registration:', error);
+        alert('Error deleting registration');
+      }
+    }
+  };
+
   if (loading) {
     return <div className="min-h-screen bg-black text-white flex items-center justify-center">Loading...</div>;
   }
